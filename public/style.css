@@ -1,0 +1,111 @@
+html { 
+    background: #000 no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#timer {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+
+#headline {
+    padding: 20px 5%;
+    color: white;
+    font-family: Questrial;
+    background-image: url(bleipp-go.JPG);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align:center;
+}
+
+#blurb {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+@media (max-width: 600px) {
+    /* add style required under 600px width */
+    #blurb {
+        font-size: 10px;
+    }
+    #timer {
+        font-size: 25px;
+    }    
+}
+
+@media (max-width: 344px) {
+    /* add style required under 344px width */
+    #blurb {
+        font-size: 6px;
+    }
+    #timer {
+        font-size: 15px;
+    }    
+}
+
+.container {
+    margin: auto;
+    max-width: 650px;
+    padding: 20px 5%;
+}
+
+#author img {
+    display: block;
+    width: 30%;
+    margin: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    border-radius: 50% 50%;
+    box-shadow: black 0px 0px 5px;
+
+}
+
+#footer {
+    padding: 0.8em;
+    color: white;
+    font-family: Questrial;
+    font-weight: bold;
+    /*background-image: url(blog-footer.jpg);*/
+    background-size: cover;
+}
+
+
+
+
+/* ALL FOLLOWING NEEDED FOR NAVBAR! */
+html,body{font-family:Questrial;font-size:18px;line-height:1.5}html{overflow-x:hidden}
+img{margin-bottom:-5px}a{color:inherit}
+
+.w3-navbar{list-style-type:none;margin:0;padding:0;overflow:hidden}
+.w3-navbar li{float:left}.w3-navbar li a,.w3-navitem,.w3-navbar li .w3-btn,.w3-navbar li .w3-input{display:block;padding:8px 16px}.w3-navbar li .w3-btn,.w3-navbar li .w3-input{border:none;outline:none;width:100%}
+.w3-navbar li a:hover{color:#000;background-color:#ccc}
+.w3-navbar .w3-dropdown-hover,.w3-navbar .w3-dropdown-click{position:static}
+.w3-navbar .w3-dropdown-hover:hover,.w3-navbar .w3-dropdown-hover:first-child,.w3-navbar .w3-dropdown-click:hover{background-color:#ccc;color:#000}
+.w3-navbar a,.w3-topnav a,.w3-sidenav a,.w3-dropdown-content a,.w3-accordion-content a,.w3-dropnav a,.w3-navblock a{text-decoration:none!important}
+.w3-navbar .w3-opennav.w3-right{float:right!important}.w3-topnav{padding:8px 8px}
+
+/* next bit includes <300px break point to vertical list */
+.w3-layout-container,.w3-cell-row{display:table;width:100%}.w3-layout-row{display:table-row}.w3-layout-cell,.w3-layout-col,.w3-cell{display:table-cell}
+.w3-layout-top,.w3-cell-top{vertical-align:top}.w3-layout-middle,.w3-cell-middle{vertical-align:middle}.w3-layout-bottom,.w3-cell-bottom{vertical-align:bottom}
+.w3-hide{display:none!important}.w3-show-block,.w3-show{display:block!important}.w3-show-inline-block{display:inline-block!important}
+@media (max-width:300px){.w3-modal-content{margin:0 10px;width:auto!important}.w3-modal{padding-top:30px}
+
+
+/* makes navbar drop to a list in a narrow viewport */
+.w3-topnav a{display:block}.w3-navbar li:not(.w3-opennav){float:none;width:100%!important}.w3-navbar li.w3-right{float:none!important}
+
+/* centres text when in narrow viewport */
+.w3-topnav,.w3-navbar{text-align:center}.w3-hide-small{display:none!important}.w3-layout-col,.w3-mobile{display:block;width:100%!important}.w3-bar-item.w3-mobile,.w3-dropdown-hover.w3-mobile,.w3-dropdown-click.w3-mobile{text-align:center}
+
+/* makes background black in narrow viewport */
+.w3-dropdown-hover.w3-mobile,.w3-dropdown-hover.w3-mobile .w3-btn,.w3-dropdown-hover.w3-mobile .w3-button,.w3-dropdown-click.w3-mobile,.w3-dropdown-click.w3-mobile .w3-btn,.w3-dropdown-click.w3-mobile .w3-button{width:100%}}
+
+/* makes background black all the time */
+.w3-black,.w3-hover-black:hover{color:#fff!important;background-color:#000!important}
