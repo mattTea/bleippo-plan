@@ -18,6 +18,40 @@ app.get('/', function (req, res) {
     res.send('The Bleippson Plan');
 });
 
+//GET memories
+//title, image, description, uploaded by
+
+
+//GET memory/:id
+
+
+//GET /memories?q=description OR month
+
+
+//POST memory
+
+
+//PUT memory
+
+
+//DELETE memory
+
+
+//GET /bleippos
+//name, image, description, skills, 
+
+
+//GET /bleippos/:id
+
+
+//POST /bleippo
+
+
+//PUT /bleippo
+
+
+//DELETE /bleippo
+
 
 
 
