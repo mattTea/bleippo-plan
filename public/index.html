@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Questrial"/>
-<!-- <link rel="icon" type="image/png" href="favicon.png"/> -->
+<link rel="icon" type="image/png" href="favicon.png"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <title>Bleippsons</title>
 
@@ -41,6 +41,13 @@
 <!-- Countdown -->
 <div id="timer" class="container"></div>
 
+<!-- Enter site -->
+<div style="text-align:center">
+    <button id="enter-button"><a href="login.html">Risitas invites you in...</a></button>
+</div>
+<!-- put a delay on button appearing -->
+
+
 
 <!-- Latest Blog -->
 <!-- <div class="container" id="blogs">
@@ -65,7 +72,7 @@
 </div> -->
 
 
-<!-- Footer  MAKE <section> TO FIX TO BOTTOM WHEN MAKING AUTHOR DETAILS FLOAT? -->
+<!-- Footer -->
 <footer id="footer">
     <div class="container" style="text-align:center">
         <p>Bleippsons | 2023</p>
@@ -110,6 +117,10 @@ $(document).ready(function () {
     }, 1000);
 
 
+    //Enter button
+    $("#enter-button").click(function (element) {
+
+    });
 });
 
 </script>

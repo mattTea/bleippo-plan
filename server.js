@@ -18,6 +18,12 @@ app.get('/', function (req, res) {
     res.send('The Bleippson Plan');
 });
 
+
+//I need some kind of login validation to enter the site at all from page /login
+
+
+
+
 //GET memories
 //title, image, description, uploaded by
 

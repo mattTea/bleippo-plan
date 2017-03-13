@@ -6,10 +6,21 @@ html {
     background-size: cover;
 }
 
+a {text-decoration: none; }
+
 #timer {
     text-align: center;
     font-size: 40px;
     color: white;
+}
+
+#auth {
+    text-align: center;
+    color: white;
+}
+
+#enter-button {
+    position: center;
 }
 
 #headline {
