@@ -13,11 +13,14 @@ html {
 }
 
 #headline {
+    width: auto;
+    height: 100%;
     padding: 20px 5%;
     color: white;
     font-family: Questrial;
     background-image: url(bleipp-go.JPG);
-    background-size: 50%;
+    background-size: contain;
+
     background-repeat: no-repeat;
     background-position: center;
     text-align:center;
