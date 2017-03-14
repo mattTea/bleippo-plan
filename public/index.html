@@ -42,10 +42,15 @@
 <div id="timer" class="container"></div>
 
 <!-- Enter site -->
-<div style="text-align:center">
-    <button id="enter-button"><a href="login.html">Risitas invites you in...</a></button>
+<!-- put a delay on div appearing -->
+<div id="enter" class="container">
+    <div>
+        <h1><span>are you Bleippson?</span></h1>
+    </div>
+    <div style="text-align:center">
+        <button id="yes-button"><a href="welcome.html">Yes!</a></button>
+    </div>
 </div>
-<!-- put a delay on button appearing -->
 
 
 
@@ -117,10 +122,7 @@ $(document).ready(function () {
     }, 1000);
 
 
-    //Enter button
-    $("#enter-button").click(function (element) {
 
-    });
 });
 
 </script>

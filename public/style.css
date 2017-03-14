@@ -14,7 +14,7 @@ a {text-decoration: none; }
     color: white;
 }
 
-#auth {
+#enter {
     text-align: center;
     color: white;
 }
@@ -31,7 +31,19 @@ a {text-decoration: none; }
     font-family: Questrial;
     background-image: url(bleipp-go.JPG);
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align:center;
+}
 
+#welcome {
+    width: auto;
+    height: 100%;
+    padding: 20px 5%;
+    color: white;
+    font-family: Questrial;
+    background-image: url(bleipp-go.JPG);
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     text-align:center;
@@ -50,7 +62,10 @@ a {text-decoration: none; }
     }
     #timer {
         font-size: 25px;
-    }    
+    }
+    h1 {
+        font-size: 25px;
+    }
 }
 
 @media (max-width: 344px) {
@@ -59,6 +74,9 @@ a {text-decoration: none; }
         font-size: 6px;
     }
     #timer {
+        font-size: 15px;
+    }
+    h1 {
         font-size: 15px;
     }    
 }
