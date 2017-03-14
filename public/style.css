@@ -23,6 +23,28 @@ a {text-decoration: none; }
     position: center;
 }
 
+button {
+    background-color: #555555;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Questrial;
+    font-size: 18px;
+    border-radius: 25px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+
 #headline {
     width: auto;
     height: 100%;
@@ -36,13 +58,26 @@ a {text-decoration: none; }
     text-align:center;
 }
 
+#welcome-headline {
+    /*width: auto;
+    height: 100%;*/
+    padding: 20px 5%;
+    color: white;
+    font-family: Questrial;
+    background-image: url(welcome-shoe.JPG);
+    background-size: cover;
+    /*background-repeat: no-repeat;*/
+    background-position: center;
+    text-align:center;
+}
+
 #welcome {
     width: auto;
     height: 100%;
     padding: 20px 5%;
     color: white;
     font-family: Questrial;
-    background-image: url(bleipp-go.JPG);
+    /*background-image: url(bleipp-go.JPG);*/
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -78,6 +113,9 @@ a {text-decoration: none; }
     }
     h1 {
         font-size: 15px;
+    }
+    p {
+        font-size: 13px;
     }    
 }
 
