@@ -42,14 +42,9 @@
 <div id="timer" class="container"></div>
 
 <!-- Enter site -->
-<!-- put a delay on div appearing -->
-<div id="enter" class="container">
-    <div>
-        <h1><span>are you Bleippson?</span></h1>
-    </div>
-    <div style="text-align:center">
-        <button type="button" id="yes-button"><a href="welcome.html">it's true!</a></button>
-    </div>
+<div id="enter" class="container"><h1><span>are you Bleippson?</span></h1></div>
+<div id="button" class="container" style="text-align:center">
+    <a href="welcome.html"><button type="button" id="yes-button">it's true!</button></a>
 </div>
 
 
@@ -78,11 +73,11 @@
 
 
 <!-- Footer -->
-<footer id="footer">
+<!-- <footer id="footer">
     <div class="container" style="text-align:center">
         <p>Bleippsons | 2023</p>
     </div>
-</footer>
+</footer> -->
 
 
 
@@ -91,6 +86,9 @@
 <script>
 //when page has fully rendered then execute this code
 $(document).ready(function () {
+
+    $("#enter").hide();
+    $("#button").hide();
 
     // Set the date we're counting down to
     var countDownDate = new Date("Mar 23, 2023 00:00:00").getTime();
@@ -122,6 +120,21 @@ $(document).ready(function () {
     }, 1000);
 
 
+    function printInTwoSeconds () {
+        // setTimeOut 2000
+        setTimeout(function () {
+            $("#enter").fadeIn();
+        }, 2000);
+    }
+    printInTwoSeconds();
+
+    function printInThreeSeconds () {
+        // setTimeOut 3000
+        setTimeout(function () {
+            $("#button").fadeIn();
+        }, 3000);
+    }
+    printInThreeSeconds();
 
 });
 

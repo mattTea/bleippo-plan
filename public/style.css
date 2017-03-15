@@ -24,6 +24,8 @@ a {text-decoration: none; }
 }
 
 button {
+    cursor: pointer;
+    display: block;
     background-color: #555555;
     border: none;
     color: white;
@@ -42,8 +44,6 @@ button:hover {
     background-color: #4CAF50;
     color: white;
 }
-
-
 
 #headline {
     width: auto;
