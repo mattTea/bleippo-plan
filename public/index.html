@@ -39,14 +39,16 @@
 
 
 <!-- Countdown -->
-<div id="timer" class="container"></div>
+<!-- <div id="timer" class="container"></div> -->
 
 <!-- Enter site -->
-<div id="enter" class="container"><h1><span>are you Bleippson?</span></h1></div>
-<div id="button" class="container" style="text-align:center">
-    <a href="welcome.html"><button type="button" id="yes-button">it's true!</button></a>
+<div id="are-you" class="container">
+    <div id="timer"></div>
+    <div id="enter"><h1><span>are you Bleippson?</span></h1></div>
+    <div id="button" style="text-align:center">
+        <a href="welcome.html"><button type="button" id="yes-button">it's true!</button></a>
+    </div>
 </div>
-
 
 
 <!-- Latest Blog -->
@@ -132,7 +134,7 @@ $(document).ready(function () {
         // setTimeOut 3000
         setTimeout(function () {
             $("#button").fadeIn();
-        }, 3000);
+        }, 3500);
     }
     printInThreeSeconds();
 
