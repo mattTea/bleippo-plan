@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
 				len: [1, 250]
 			}			
 		},
-		image: {
+		imageUrl: {
 			type: DataTypes.STRING, //image url possibly stored on Cosmic?
 			alloNull: true
 		},
@@ -15,9 +15,13 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.TEXT,
 			allowNull: false
 		},
-		uploadedBy: {
-			type: DataTypes.CHAR,
+		date: {
+			type: DataTypes.DATEONLY, //YYYY-MM-DD format? Not posting for some reason
 			allowNull: false
+		},
+		uploadedBy: {
+			type: DataTypes.STRING,
+			allowNull: true
 			// defaultValue: function() {
    //    			return bleippoID
    //  		}

@@ -19,6 +19,7 @@ Structure...
 	Title
 	Image
 	Date (it happened)
+	Where
 
 2. Ability for users to post memories - how will these appear?
 	On anniversaries of when they happened
