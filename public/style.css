@@ -71,6 +71,19 @@ button:hover {
     text-align:center;
 }
 
+#memory-headline {
+    /*width: auto;
+    height: 100%;*/
+    padding: 20px 5%;
+    color: white;
+    font-family: Questrial;
+    /*background-image: url(welcome-shoe.JPG);*/
+    background-size: cover;
+    /*background-repeat: no-repeat;*/
+    background-position: center;
+    text-align:center;
+}
+
 #welcome {
     width: auto;
     height: 100%;
