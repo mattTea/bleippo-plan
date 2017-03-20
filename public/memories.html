@@ -24,15 +24,35 @@
 </nav>
 
 
-<!-- Calendar -->
+<!-- Memories -->
 <div id="memory-headline">
     <div class="container">
         <div>
-            <h1><span><br><br><br><br>On this day...</span></h1>
+            <h1><span>On this day...</span></h1>
             <p>let Risitas guide you through some memories</p>
         </div>
+        <div class="container" id="memory">
+            <div id="memory-title"></div>
+            <div id="memory-date"></div>
+            <img id="memory-image" src="" alt="today's memory image"></img>
+            <div id="memory-content"></div>
+            
+        <!--     <div id="comments">
+                <div id="comment-header">
+                    <h4>comments...</h4>
+                </div>
+                <div id="blog-comments"></div>
+            </div>
+            
+            <div id="new-comment">
+                <textarea id="comments-box" name="new-comment" rows="4" cols="50" placeholder="your thoughts..."></textarea>                
+                <button id="submit-button" value="Submit">Submit</button>
+            </div> -->
+
+        </div>        
     </div>
 </div>
+<!-- somewhere in above we need to show today's date -->
 
 
 <!-- Footer -->
@@ -50,15 +70,39 @@
 //when page has fully rendered then execute this code
 $(document).ready(function () {
 
-    // GET /media
-    // loop over array
-    // if media[i].original_name === today's date() {
-        // append image/s in a carosel 
-    // } else {
-        // show some words and display an image or memory from nearby
-    }
+    var getMemories = "https://api.cosmicjs.com/v1/bleippsons/object-type/memories";
+    $.get(getMemories, function (data) {
 
+        var d = new Date();
+        var date = ("0" + (d.getMonth() + 1)).slice(-2) + '-' + ("0" + d.getDate()).slice(-2);
+        console.log(date);
 
+        if (!!data.objects) {
+            console.log('memories exist!')
+            for (var i = 0; i < data.objects.length; i++) {
+                var memoryDate = data.objects[i].metadata.memory_date;
+                var memoryDateNoYear = memoryDate.charAt(5) + memoryDate.charAt(6) + memoryDate.charAt(7) + memoryDate.charAt(8) + memoryDate.charAt(9);
+                console.log(memoryDateNoYear);
+                if (date === memoryDateNoYear) {
+                    // return data.objects[i];
+                    var memoryTitle = data.objects[i].title;
+                    var memoryDate = data.objects[i].metadata.memory_date;
+                    var memoryImage = data.objects[i].metadata.hero.url;
+                    var memoryContent = data.objects[i].content;
+                    console.log(memoryDate);
+                    $("#memory-title").html(memoryTitle);
+                    $("#memory-date").html(memoryDate);
+                    $("#memory-image").attr("src", memoryImage);
+                    $("#memory-content").html(memoryContent);
+
+                } else {
+                    $("#memory-content").append('No memories of this day?? BOOK A HOLIDAY!');
+                    console.log('query finished, no article found');
+                }
+            }
+        }
+
+    });
 
 });
 
