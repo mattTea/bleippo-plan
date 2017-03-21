@@ -19,7 +19,7 @@
     <ul class="w3-navbar w3-black">
         <li><a href="index.html">Home</a></li>
         <li><a href="welcome.html">Welcome</a></li>
-        <!-- <li><a href="javascript:void(0)">About</a></li> -->
+        <li><a href="#" style="font-weight:bold">Memories</a></li>
     </ul>
 </nav>
 
@@ -29,7 +29,7 @@
     <div class="container">
         <div>
             <h1><span>On this day...</span></h1>
-            <p>let Risitas guide you through some memories</p>
+            <p id="guide">let Risitas show you some memories</p>
         </div>
         <div class="container" id="memory">
             <div id="memory-title"></div>
@@ -70,34 +70,48 @@
 //when page has fully rendered then execute this code
 $(document).ready(function () {
 
-    var getMemories = "https://api.cosmicjs.com/v1/bleippsons/object-type/memories";
+    var getMemories = "https://api.cosmicjs.com/v1/matttea-blog-app/object-type/memories";
     $.get(getMemories, function (data) {
 
         var d = new Date();
         var date = ("0" + (d.getMonth() + 1)).slice(-2) + '-' + ("0" + d.getDate()).slice(-2);
         console.log(date);
 
+        var dateArray = [];
         if (!!data.objects) {
             console.log('memories exist!')
             for (var i = 0; i < data.objects.length; i++) {
-                var memoryDate = data.objects[i].metadata.memory_date;
-                var memoryDateNoYear = memoryDate.charAt(5) + memoryDate.charAt(6) + memoryDate.charAt(7) + memoryDate.charAt(8) + memoryDate.charAt(9);
-                console.log(memoryDateNoYear);
-                if (date === memoryDateNoYear) {
-                    // return data.objects[i];
-                    var memoryTitle = data.objects[i].title;
-                    var memoryDate = data.objects[i].metadata.memory_date;
-                    var memoryImage = data.objects[i].metadata.hero.url;
-                    var memoryContent = data.objects[i].content;
-                    console.log(memoryDate);
-                    $("#memory-title").html(memoryTitle);
-                    $("#memory-date").html(memoryDate);
-                    $("#memory-image").attr("src", memoryImage);
-                    $("#memory-content").html(memoryContent);
 
+                if ((data.objects[i].metadata.memory_date.charAt(5) + data.objects[i].metadata.memory_date.charAt(6) + data.objects[i].metadata.memory_date.charAt(7) + data.objects[i].metadata.memory_date.charAt(8) + data.objects[i].metadata.memory_date.charAt(9)) === date) {
+                    dateArray.push(data.objects[i]);
+
+                    var memoryDate = dateArray[0].metadata.memory_date;
+                    var memoryDateNoYear = memoryDate.charAt(5) + memoryDate.charAt(6) + memoryDate.charAt(7) + memoryDate.charAt(8) + memoryDate.charAt(9);
+                    console.log(memoryDateNoYear);
+                    if (date === memoryDateNoYear) {
+                        // return data.objects[i];
+                        var memoryTitle = dateArray[0].title;
+                        var memoryDate = dateArray[0].metadata.memory_date;
+                        var memoryImage = dateArray[0].metadata.hero.url;
+                        var memoryContent = dateArray[0].content;
+                        console.log(memoryDate);
+                        $("#memory-title").html(memoryTitle);
+                        $("#memory-date").html(memoryDate);
+                        $("#memory-image").attr("src", memoryImage);
+                        $("#memory-content").html(memoryContent);
+
+                    } else {
+                        $("#memory-image").hide();
+                        $("#guide").hide();
+                        $("#memory-content").html('Well this is sad,<br>there are no memories for this day...<br>BOOK A HOLIDAY, QUICK!');
+                        console.log('query finished, no memory found');
+                    }
+                    return
                 } else {
-                    $("#memory-content").append('No memories of this day?? BOOK A HOLIDAY!');
-                    console.log('query finished, no article found');
+                    $("#memory-image").hide();
+                    $("#guide").hide();
+                    $("#memory-content").html('Well this is sad,<br>there are no memories for this day...<br>BOOK A HOLIDAY, QUICK!');
+                    console.log('query finished, no memory found');                    
                 }
             }
         }

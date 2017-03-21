@@ -27,7 +27,9 @@ button {
     cursor: pointer;
     display: block;
     background-color: #555555;
-    border: none;
+    /*background-color: #20B2AA;*/
+    border-color: white;
+    border: 2px;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -133,6 +135,9 @@ button:hover {
     }
     h1 {
         font-size: 25px;
+    }
+    p {
+        font-size: 18px;
     }
 }
 
