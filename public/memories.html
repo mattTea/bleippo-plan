@@ -29,7 +29,6 @@
     <div class="container">
         <div>
             <h1><span>On this day...</span></h1>
-            <!-- <p id="guide">let Risitas show you some memories</p> -->
         </div>
         <div class="container" id="memory">
             <div id="memory-date"></div>
@@ -81,44 +80,32 @@ $(document).ready(function () {
         if (!!data.objects) {
             console.log('memories exist!')
             for (var i = 0; i < data.objects.length; i++) {
+                if (data.objects[i].metadata.memory_date.substring(5) !== date) {
+                    $("#memory-image").hide();
+                    $("#memory-content").html('Well this is sad,<br>there are no memories for this day...<br>BOOK A HOLIDAY, QUICK!');
+                    console.log('query finished, no memory found');
 
-                if ((data.objects[i].metadata.memory_date.charAt(5) + data.objects[i].metadata.memory_date.charAt(6) + data.objects[i].metadata.memory_date.charAt(7) + data.objects[i].metadata.memory_date.charAt(8) + data.objects[i].metadata.memory_date.charAt(9)) === date) {
+                } else {
+                    console.log('substring date: ' + data.objects[i].metadata.memory_date.substring(5))
                     dateArray.push(data.objects[i]);
 
+                    var memoryTitle = dateArray[0].title;
                     var memoryDate = dateArray[0].metadata.memory_date;
-                    var memoryDateNoYear = memoryDate.charAt(5) + memoryDate.charAt(6) + memoryDate.charAt(7) + memoryDate.charAt(8) + memoryDate.charAt(9);
-                    console.log(memoryDateNoYear);
-                    if (date === memoryDateNoYear) {
-                        // return data.objects[i];
-                        var memoryTitle = dateArray[0].title;
-                        var memoryDate = dateArray[0].metadata.memory_date;
-                        var memoryDateCorrect = memoryDate.charAt(8) + memoryDate.charAt(9) + '-' + memoryDate.charAt(5) + memoryDate.charAt(6) + '-' + memoryDate.charAt(0) + memoryDate.charAt(1) + memoryDate.charAt(2) + memoryDate.charAt(3);
-                        var memoryImage = dateArray[0].metadata.hero.url;
-                        var memoryContent = dateArray[0].content;
-                        console.log(memoryDate);
-                        $("#memory-title").html(memoryTitle);
-                        $("#memory-date").html(memoryDateCorrect);
-                        $("#memory-image").attr("src", memoryImage);
-                        $("#memory-content").html(memoryContent);
+                    var memoryDateCorrect = memoryDate.charAt(8) + memoryDate.charAt(9) + '-' + memoryDate.charAt(5) + memoryDate.charAt(6) + '-' + memoryDate.charAt(0) + memoryDate.charAt(1) + memoryDate.charAt(2) + memoryDate.charAt(3);
+                    var memoryImage = dateArray[0].metadata.hero.url;
+                    var memoryContent = dateArray[0].content;
+                    console.log(memoryDate);
 
-                    } else {
-                        $("#memory-image").hide();
-                        $("#guide").hide();
-                        $("#memory-content").html('Well this is sad,<br>there are no memories for this day...<br>BOOK A HOLIDAY, QUICK!');
-                        console.log('query finished, no memory found');
-                    }
-                    return
-                } else {
-                    $("#memory-image").hide();
-                    $("#guide").hide();
-                    $("#memory-content").html('Well this is sad,<br>there are no memories for this day...<br>BOOK A HOLIDAY, QUICK!');
-                    console.log('query finished, no memory found');                    
+                    $("#memory-image").show();
+                    $("#memory-title").html(memoryTitle);
+                    $("#memory-date").html(memoryDateCorrect);
+                    $("#memory-image").attr("src", memoryImage);
+                    $("#memory-content").html(memoryContent);
+                    return;                   
                 }
             }
         }
-
     });
-
 });
 
 
