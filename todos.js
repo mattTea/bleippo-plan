@@ -21,6 +21,10 @@ Structure...
 	Date (it happened)
 	Where
 
-2. Ability for users to post memories - how will these appear?
+3. Ability for users to post memories - how will these appear?
 	On anniversaries of when they happened
 	Option to notify NOW
+
+4. Login ability (middleware?)
+
+5. Post memories

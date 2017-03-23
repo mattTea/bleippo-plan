@@ -29,11 +29,11 @@
     <div class="container">
         <div>
             <h1><span>On this day...</span></h1>
-            <p id="guide">let Risitas show you some memories</p>
+            <!-- <p id="guide">let Risitas show you some memories</p> -->
         </div>
         <div class="container" id="memory">
-            <div id="memory-title"></div>
             <div id="memory-date"></div>
+            <div id="memory-title"></div>
             <img id="memory-image" src="" alt="today's memory image"></img>
             <div id="memory-content"></div>
             
@@ -92,11 +92,12 @@ $(document).ready(function () {
                         // return data.objects[i];
                         var memoryTitle = dateArray[0].title;
                         var memoryDate = dateArray[0].metadata.memory_date;
+                        var memoryDateCorrect = memoryDate.charAt(8) + memoryDate.charAt(9) + '-' + memoryDate.charAt(5) + memoryDate.charAt(6) + '-' + memoryDate.charAt(0) + memoryDate.charAt(1) + memoryDate.charAt(2) + memoryDate.charAt(3);
                         var memoryImage = dateArray[0].metadata.hero.url;
                         var memoryContent = dateArray[0].content;
                         console.log(memoryDate);
                         $("#memory-title").html(memoryTitle);
-                        $("#memory-date").html(memoryDate);
+                        $("#memory-date").html(memoryDateCorrect);
                         $("#memory-image").attr("src", memoryImage);
                         $("#memory-content").html(memoryContent);
 
