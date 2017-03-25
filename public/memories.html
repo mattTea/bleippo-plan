@@ -36,22 +36,21 @@
             <img id="memory-image" src="" alt="today's memory image"></img>
             <div id="memory-content"></div>
             
-        <!--     <div id="comments">
-                <div id="comment-header">
-                    <h4>comments...</h4>
-                </div>
-                <div id="blog-comments"></div>
-            </div>
-            
-            <div id="new-comment">
-                <textarea id="comments-box" name="new-comment" rows="4" cols="50" placeholder="your thoughts..."></textarea>                
-                <button id="submit-button" value="Submit">Submit</button>
-            </div> -->
+
 
         </div>        
     </div>
 </div>
 <!-- somewhere in above we need to show today's date -->
+
+
+<!-- Date picker -->
+<div id="date-picker" class="container">
+    <p>pick a date to find another...</p>
+    <input type="date" id="date-input" value="2023-03-23">
+    <p><br></p>
+    <button id="date-button">find memory</button>
+</div>
 
 
 <!-- Footer -->
@@ -68,11 +67,12 @@
 <script>
 //when page has fully rendered then execute this code
 $(document).ready(function () {
+    var d;
 
     var getMemories = "https://api.cosmicjs.com/v1/matttea-blog-app/object-type/memories";
     $.get(getMemories, function (data) {
 
-        var d = new Date();
+        d = new Date();
         var date = ("0" + (d.getMonth() + 1)).slice(-2) + '-' + ("0" + d.getDate()).slice(-2);
         console.log(date);
 
@@ -106,11 +106,60 @@ $(document).ready(function () {
             }
         }
     });
+
+    // function pickDate() {
+    //     var x = document.getElementById("myDate").value;
+    //     document.getElementById("demo").innerHTML = x;
+    // }
+
+    $("#date-button").click(function (element) {
+        //get date  from input box
+        $("#memory-title").empty(); // added to clear previous result table
+        $("#memory-image").empty();
+        $("#memory-content").empty();
+
+        var date = $("#date-input").val().substring(5);
+        console.log('searchDate: ', date);
+
+        var getMemories = "https://api.cosmicjs.com/v1/matttea-blog-app/object-type/memories";
+        $.get(getMemories, function (data) {
+            var dateArray = [];
+            if (!!data.objects) {
+                console.log('memories exist!')
+                for (var i = 0; i < data.objects.length; i++) {
+                    if (data.objects[i].metadata.memory_date.substring(5) !== date) {
+                        $("#memory-image").hide();
+                        $("#memory-content").html('Well this is sad,<br>there are no memories for this day...<br>BOOK A HOLIDAY, QUICK!');
+                        console.log('query finished, no memory found');
+
+                    } else {
+                        console.log('substring date: ' + data.objects[i].metadata.memory_date.substring(5))
+                        dateArray.push(data.objects[i]);
+
+                        var memoryTitle = dateArray[0].title;
+                        var memoryDate = dateArray[0].metadata.memory_date;
+                        var memoryDateCorrect = memoryDate.charAt(8) + memoryDate.charAt(9) + '-' + memoryDate.charAt(5) + memoryDate.charAt(6) + '-' + memoryDate.charAt(0) + memoryDate.charAt(1) + memoryDate.charAt(2) + memoryDate.charAt(3);
+                        var memoryImage = dateArray[0].metadata.hero.url;
+                        var memoryContent = dateArray[0].content;
+                        console.log(memoryDate);
+
+                        $("#memory-image").show();
+                        $("#memory-title").html(memoryTitle);
+                        $("#memory-date").html(memoryDateCorrect);
+                        $("#memory-image").attr("src", memoryImage);
+                        $("#memory-content").html(memoryContent);
+                        return;                   
+                    }
+                }
+            }
+        });
+
+
+    });
+
 });
 
 
 </script>
-
-
 
 </html>
