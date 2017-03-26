@@ -48,6 +48,26 @@ button:hover {
     color: white;
 }
 
+.small-button {
+   padding: 8px 15px;
+   font-size: 12px;
+}
+
+#date-input {
+    display: block;
+    background-color: black;
+    /*border-color: white;
+    border-style: solid;
+    border-width: 1px;*/
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Questrial;
+    font-size: 12px;
+}
+
 #headline {
     width: auto;
     height: 100%;
@@ -68,6 +88,19 @@ button:hover {
     color: white;
     font-family: Questrial;
     background-image: url(welcome-shoe.JPG);
+    background-size: cover;
+    /*background-repeat: no-repeat;*/
+    background-position: center;
+    text-align:center;
+}
+
+#upload-headline {
+    /*width: auto;
+    height: 100%;*/
+    padding: 20px 5%;
+    color: white;
+    font-family: Questrial;
+    background-image: url(upload.jpg);
     background-size: cover;
     /*background-repeat: no-repeat;*/
     background-position: center;
@@ -207,7 +240,7 @@ img{margin-bottom:-5px}a{color:inherit}
 .w3-layout-container,.w3-cell-row{display:table;width:100%}.w3-layout-row{display:table-row}.w3-layout-cell,.w3-layout-col,.w3-cell{display:table-cell}
 .w3-layout-top,.w3-cell-top{vertical-align:top}.w3-layout-middle,.w3-cell-middle{vertical-align:middle}.w3-layout-bottom,.w3-cell-bottom{vertical-align:bottom}
 .w3-hide{display:none!important}.w3-show-block,.w3-show{display:block!important}.w3-show-inline-block{display:inline-block!important}
-@media (max-width:300px){.w3-modal-content{margin:0 10px;width:auto!important}.w3-modal{padding-top:30px}
+@media (max-width:410px){.w3-modal-content{margin:0 10px;width:auto!important}.w3-modal{padding-top:30px}
 
 
 /* makes navbar drop to a list in a narrow viewport */

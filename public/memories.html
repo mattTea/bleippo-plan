@@ -20,6 +20,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="welcome.html">Welcome</a></li>
         <li><a href="#" style="font-weight:bold">Memories</a></li>
+        <li><a href="upload.html">Upload</a></li>
     </ul>
 </nav>
 
@@ -35,21 +36,22 @@
             <div id="memory-title"></div>
             <img id="memory-image" src="" alt="today's memory image"></img>
             <div id="memory-content"></div>
-            
-
-
         </div>        
     </div>
 </div>
 <!-- somewhere in above we need to show today's date -->
 
 
-<!-- Date picker -->
+<!-- Date picker & memory loader -->
 <div id="date-picker" class="container">
     <p>pick a date to find another...</p>
-    <input type="date" id="date-input" value="2023-03-23">
-    <p><br></p>
-    <button id="date-button">find memory</button>
+    <input type="date" id="date-input" value="2023-03-23"></input><br><br>
+    <button id="date-button" class="small-button">find memory</button><br><br>
+    <p>or...</p>
+    <!-- <button id="upload-button" class="small-button">upload</button> -->
+    <div id="button" style="text-align:center">
+        <a href="upload.html"><button type="button" id="upload-button" class="small-button">upload your own</button></a>
+    </div>
 </div>
 
 
@@ -81,7 +83,8 @@ $(document).ready(function () {
             console.log('memories exist!')
             for (var i = 0; i < data.objects.length; i++) {
                 if (data.objects[i].metadata.memory_date.substring(5) !== date) {
-                    $("#memory-image").hide();
+                    // $("#memory-image").hide();
+                    $("#memory-image").attr("src", "no-memory.jpg");
                     $("#memory-content").html('Well this is sad,<br>there are no memories for this day...<br>BOOK A HOLIDAY, QUICK!');
                     console.log('query finished, no memory found');
 
@@ -107,11 +110,6 @@ $(document).ready(function () {
         }
     });
 
-    // function pickDate() {
-    //     var x = document.getElementById("myDate").value;
-    //     document.getElementById("demo").innerHTML = x;
-    // }
-
     $("#date-button").click(function (element) {
         //get date  from input box
         $("#memory-title").empty(); // added to clear previous result table
@@ -128,7 +126,8 @@ $(document).ready(function () {
                 console.log('memories exist!')
                 for (var i = 0; i < data.objects.length; i++) {
                     if (data.objects[i].metadata.memory_date.substring(5) !== date) {
-                        $("#memory-image").hide();
+                        // $("#memory-image").hide();
+                        $("#memory-image").attr("src", "no-memory.jpg");
                         $("#memory-content").html('Well this is sad,<br>there are no memories for this day...<br>BOOK A HOLIDAY, QUICK!');
                         console.log('query finished, no memory found');
 
