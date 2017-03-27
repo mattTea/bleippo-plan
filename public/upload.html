@@ -66,41 +66,34 @@ $(document).ready(function () {
         var memoryContent = $("#memory-content").val();
 
         var memoryParams = {
-            type_slug: 'memories',
             title: memoryTitle,
+            type_slug: 'memories',
             content: memoryContent,
-            metafields: [
-                {
-                    key: 'memory_date',
-                    type: 'date',
-                    value: memoryDate
-                }
-                // } ,
-                // {
-                //     key: ,
-                //     type: ,
-                //     value: 
-                // }
-            ]
-            // metadata: {
-            //     memory_date: memoryDate
-                // hero: {
-                //     url: memoryImage
-                // }
-            // }
+            metafields: [{
+                key: 'headline',
+                // title: 'Headline',
+                type: 'text',
+                value: memoryTitle                
+            }, {
+                key: 'memory_date',
+                // title: 'Memory Date',
+                type: 'date',
+                value: memoryDate
+            }]
         };
+
         var memoryParamsJson = JSON.stringify(memoryParams);
         console.log('memoryParamsJson: ' + memoryParamsJson);
 
         var apiPost = "https://api.cosmicjs.com/v1/matttea-blog-app/add-object";
-        $.post(apiPost, memoryParams);
+        // $.post(apiPost, memoryParams); // commented out until I fix the metafield upload bug
         $("#memory-title").val(''); // to empty all input fields after upload
         // $("#memory-image").val('');
         $("#memory-date").val('');
         $("#memory-content").val('');
 
-        // SOME REASON NOT ADDING DATE WHEN MEMORY IS POSTED (in either type of date or text)
-        // ALSO even with a default date, still returning error of memory_date of null 
+        // NOT ADDING ANY METAFIELDS IN POST ROUTE
+        // ALSO even with a default date, still returning error of memory_date of null (showing null metafelds and metadata)
         // TODO make menu smaller or roll up when in narrow viewport
         // TODO adjust text sizing on upload page in narrow viewport <p> text is bigger than header
     });
