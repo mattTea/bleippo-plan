@@ -71,12 +71,10 @@ $(document).ready(function () {
             content: memoryContent,
             metafields: [{
                 key: 'headline',
-                // title: 'Headline',
                 type: 'text',
                 value: memoryTitle                
             }, {
                 key: 'memory_date',
-                // title: 'Memory Date',
                 type: 'date',
                 value: memoryDate
             }]
@@ -84,16 +82,26 @@ $(document).ready(function () {
 
         var memoryParamsJson = JSON.stringify(memoryParams);
         console.log('memoryParamsJson: ' + memoryParamsJson);
-
         var apiPost = "https://api.cosmicjs.com/v1/matttea-blog-app/add-object";
-        // $.post(apiPost, memoryParams); // commented out until I fix the metafield upload bug
+        
+        $.ajax({
+            type: "POST",
+            url: apiPost,
+            data: JSON.stringify(memoryParams),
+            contentType: "application/json",
+            success: function(data){
+                alert(data);
+            },
+            failure: function(errMsg) {
+                alert(errMsg);
+            }
+        });
+
         $("#memory-title").val(''); // to empty all input fields after upload
         // $("#memory-image").val('');
         $("#memory-date").val('');
         $("#memory-content").val('');
 
-        // NOT ADDING ANY METAFIELDS IN POST ROUTE
-        // ALSO even with a default date, still returning error of memory_date of null (showing null metafelds and metadata)
         // TODO make menu smaller or roll up when in narrow viewport
         // TODO adjust text sizing on upload page in narrow viewport <p> text is bigger than header
     });
