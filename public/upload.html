@@ -32,7 +32,14 @@
             <h1><span><br><br>Show us yours!</span></h1>
             <p>always room for more Bleippson memories</p>
             <input id="memory-title" type="text" placeholder="memory title"></input><br>
-            <!-- <input id="memory-image" type="text" placeholder="enter memory title"/><br> -->
+
+            <form action="https://api.cosmicjs.com/v1/matttea-blog-app/media" method="post" enctype="multipart/form-data">
+                <input type="file" name="media" id="image-file" />
+                <input type="submit" value="Upload" />
+            </form>
+
+            <!-- <input type="file" name="media" id="image-file" />             -->
+
             <input type="date" id="memory-date" value="2023-03-23"></input><br>
             <input id="memory-content" type="text" placeholder="memory description"/></input><br><br>
             <button id="upload-button" class="small-button">upload</button>
@@ -61,8 +68,8 @@ $(document).ready(function () {
     $("#upload-button").click(function (element) {
         
         var memoryTitle = $("#memory-title").val();
-        var memoryImage;
-        var memoryDate = $("#memory-date").val(); // check there isn't a .date() or something I should be using!
+        // var memoryImage;
+        var memoryDate = $("#memory-date").val();
         var memoryContent = $("#memory-content").val();
 
         var memoryParams = {
@@ -90,15 +97,39 @@ $(document).ready(function () {
             data: JSON.stringify(memoryParams),
             contentType: "application/json",
             success: function(data){
-                alert(data);
+                console.log('success: ' + data);
             },
             failure: function(errMsg) {
-                alert(errMsg);
+                console.log('errorMsg: ' + errMsg);
             }
         });
 
-        $("#memory-title").val(''); // to empty all input fields after upload
-        // $("#memory-image").val('');
+        // var memoryImage = $('#image-file');
+        // // COMMENT var memoryImage = document.getElementById('image-file');
+        // // COMMENT var memoryImageFile = memoryImage.file;
+        // var imagePost = "https://api.cosmicjs.com/v1/matttea-blog-app/media";
+
+        // $.ajax({
+        //     type: "POST",
+        //     url: imagePost,
+        //     // COMMENT data: memoryImage,
+        //     media: memoryImage,
+        //     // COMMENT media: "your-media-multipart-form-data",
+        //     // COMMENT processData: false,
+        //     contentType: "multipart/form-data",
+        //     // COMMENT crossDomain : true,
+        //     // COMMENT contentType: false,
+        //     success: function(data){
+        //         console.log('success: ' + data);
+        //     },
+        //     failure: function(errMsg) {
+        //         console.log(errMsg);
+        //     }            
+        // });
+
+        // COMMENT Empty all input fields after upload
+        $("#memory-title").val('');
+        // COMMENT $("#image-file").val('');
         $("#memory-date").val('');
         $("#memory-content").val('');
 
