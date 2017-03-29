@@ -16,7 +16,7 @@
 
 <!-- Navigation -->
 <nav>
-    <ul class="w3-navbar w3-black">
+    <ul class="w3-navbar w3-black" id="navbar">
         <li><a href="index.html">Home</a></li>
         <li><a href="welcome.html">Welcome</a></li>
         <li><a href="memories.html">Memories</a></li>
@@ -32,18 +32,16 @@
             <h1><span><br><br>Show us yours!</span></h1>
             <p>always room for more Bleippson memories</p>
             <input id="memory-title" type="text" placeholder="memory title"></input><br>
-
-            <form action="https://api.cosmicjs.com/v1/matttea-blog-app/media" method="post" enctype="multipart/form-data">
-                <input type="file" name="media" id="image-file" />
-                <input type="submit" value="Upload" />
-            </form>
-
-            <!-- <input type="file" name="media" id="image-file" />             -->
-
-            <input type="date" id="memory-date" value="2023-03-23"></input><br>
-            <input id="memory-content" type="text" placeholder="memory description"/></input><br><br>
-            <button id="upload-button" class="small-button">upload</button>
-            <p>(coming soon)</p>          
+            
+            <!-- following form creates both media image and memory object, but returns a json string webpage -->
+            <!-- <form action="https://api.cosmicjs.com/v1/matttea-blog-app/media" method="post" enctype="multipart/form-data" > -->
+            <form>
+                <input type="file" name="media" id="image-file" /><br>
+                <input type="date" id="memory-date" value="2023-03-23"></input><br>
+                <input id="memory-content" type="text" placeholder="memory description"/></input><br><br>
+                <button id="upload-button" type="submit" class="small-button">upload</button>
+                <p>(coming soon)</p>    
+            </form>      
         </div>
     </div>
 </div>
@@ -63,12 +61,21 @@
 <script>
 //when page has fully rendered then execute this code
 $(document).ready(function () {
+    $("#navbar").addClass("js").before('<div id="menu" style="color:white">☰</div>');
+    $("#menu").click(function() {
+        $("#navbar").slideToggle();
+    });
+
+    $(window).resize(function() {
+        if(window.innerWidth > 600) {
+            $("#navbar").removeAttr("style");
+        }
+    });
 
     //POST /memories to Cosmic
     $("#upload-button").click(function (element) {
         
         var memoryTitle = $("#memory-title").val();
-        // var memoryImage;
         var memoryDate = $("#memory-date").val();
         var memoryContent = $("#memory-content").val();
 
@@ -91,50 +98,28 @@ $(document).ready(function () {
         console.log('memoryParamsJson: ' + memoryParamsJson);
         var apiPost = "https://api.cosmicjs.com/v1/matttea-blog-app/add-object";
         
-        $.ajax({
-            type: "POST",
-            url: apiPost,
-            data: JSON.stringify(memoryParams),
-            contentType: "application/json",
-            success: function(data){
-                console.log('success: ' + data);
-            },
-            failure: function(errMsg) {
-                console.log('errorMsg: ' + errMsg);
-            }
-        });
-
-        // var memoryImage = $('#image-file');
-        // // COMMENT var memoryImage = document.getElementById('image-file');
-        // // COMMENT var memoryImageFile = memoryImage.file;
-        // var imagePost = "https://api.cosmicjs.com/v1/matttea-blog-app/media";
-
+        //COMMENTED out until to commit to Heroku
         // $.ajax({
         //     type: "POST",
-        //     url: imagePost,
-        //     // COMMENT data: memoryImage,
-        //     media: memoryImage,
-        //     // COMMENT media: "your-media-multipart-form-data",
-        //     // COMMENT processData: false,
-        //     contentType: "multipart/form-data",
-        //     // COMMENT crossDomain : true,
-        //     // COMMENT contentType: false,
+        //     url: apiPost,
+        //     data: JSON.stringify(memoryParams),
+        //     contentType: "application/json",
         //     success: function(data){
         //         console.log('success: ' + data);
         //     },
         //     failure: function(errMsg) {
-        //         console.log(errMsg);
-        //     }            
+        //         console.log('errorMsg: ' + errMsg);
+        //     }
         // });
 
-        // COMMENT Empty all input fields after upload
+        // Empty all input fields after upload
         $("#memory-title").val('');
-        // COMMENT $("#image-file").val('');
+        // $("#image-file").val(''); // can't use this as it empties field before posting and errors
         $("#memory-date").val('');
         $("#memory-content").val('');
 
-        // TODO make menu smaller or roll up when in narrow viewport
-        // TODO adjust text sizing on upload page in narrow viewport <p> text is bigger than header
+        // window.location.href = '/upload.html';
+
     });
 
 });

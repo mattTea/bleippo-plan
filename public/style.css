@@ -168,6 +168,13 @@ button:hover {
     padding-bottom:10px
 }
 
+@media (min-width: 600px) {
+    /* add style required over 600px width */
+    #menu { /* menu is the burger image */
+        display: none;
+    }
+}
+
 @media (max-width: 600px) {
     /* add style required under 600px width */
     #blurb {
@@ -178,6 +185,12 @@ button:hover {
     }
     h1 {
         font-size: 25px;
+    }
+    #navbar.js {
+        display: none;
+    }
+    #navbar {
+        font-size: 15px;
     }
 }
 
@@ -190,7 +203,7 @@ button:hover {
         font-size: 15px;
     }
     h1 {
-        font-size: 15px;
+        font-size: 22px;
     }  
 }
 
@@ -236,7 +249,7 @@ img{margin-bottom:-5px}a{color:inherit}
 .w3-navbar a,.w3-topnav a,.w3-sidenav a,.w3-dropdown-content a,.w3-accordion-content a,.w3-dropnav a,.w3-navblock a{text-decoration:none!important}
 .w3-navbar .w3-opennav.w3-right{float:right!important}.w3-topnav{padding:8px 8px}
 
-/* next bit includes <300px break point to vertical list */
+/* next bit includes <421px break point to vertical list */
 .w3-layout-container,.w3-cell-row{display:table;width:100%}.w3-layout-row{display:table-row}.w3-layout-cell,.w3-layout-col,.w3-cell{display:table-cell}
 .w3-layout-top,.w3-cell-top{vertical-align:top}.w3-layout-middle,.w3-cell-middle{vertical-align:middle}.w3-layout-bottom,.w3-cell-bottom{vertical-align:bottom}
 .w3-hide{display:none!important}.w3-show-block,.w3-show{display:block!important}.w3-show-inline-block{display:inline-block!important}
@@ -246,8 +259,8 @@ img{margin-bottom:-5px}a{color:inherit}
 /* makes navbar drop to a list in a narrow viewport */
 .w3-topnav a{display:block}.w3-navbar li:not(.w3-opennav){float:none;width:100%!important}.w3-navbar li.w3-right{float:none!important}
 
-/* centres text when in narrow viewport */
-.w3-topnav,.w3-navbar{text-align:center}.w3-hide-small{display:none!important}.w3-layout-col,.w3-mobile{display:block;width:100%!important}.w3-bar-item.w3-mobile,.w3-dropdown-hover.w3-mobile,.w3-dropdown-click.w3-mobile{text-align:center}
+/* left aligns text when in narrow viewport */
+.w3-topnav,.w3-navbar{text-align:left}.w3-hide-small{display:none!important}.w3-layout-col,.w3-mobile{display:block;width:100%!important}.w3-bar-item.w3-mobile,.w3-dropdown-hover.w3-mobile,.w3-dropdown-click.w3-mobile{text-align:center}
 
 /* makes background black in narrow viewport */
 .w3-dropdown-hover.w3-mobile,.w3-dropdown-hover.w3-mobile .w3-btn,.w3-dropdown-hover.w3-mobile .w3-button,.w3-dropdown-click.w3-mobile,.w3-dropdown-click.w3-mobile .w3-btn,.w3-dropdown-click.w3-mobile .w3-button{width:100%}}
